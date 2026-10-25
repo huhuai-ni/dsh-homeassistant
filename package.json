@@ -1,0 +1,28 @@
+{
+  "name": "dsh-homeassistant",
+  "version": "0.2.1",
+  "description": "DSH 插件：通过 Home Assistant 控制家里的设备（灯、空调、风扇），带设置页",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": ["index.js", "client.js", "cordis.patch.yml", "README.md"],
+  "keywords": ["dsh", "dsh-plugin", "home-assistant", "smart-home"],
+  "engines": { "node": ">=22" },
+  "license": "MIT",
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-settings-plugins"
+      ]
+    }
+  }
+}
