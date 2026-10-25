@@ -1,7 +1,7 @@
 {
   "name": "dsh-homeassistant",
   "version": "0.2.1",
-  "description": "DSH 插件：通过 Home Assistant 控制家里的设备（灯、空调、风扇），带设置页",
+  "description": "DSH 插件：通过 Home Assistant 控制家里的设备（灯、空调、风扇），带设置页与完整教程",
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -10,12 +10,40 @@
     "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json"
   },
-  "files": ["index.js", "client.js", "cordis.patch.yml", "README.md"],
-  "keywords": ["dsh", "dsh-plugin", "home-assistant", "smart-home"],
-  "engines": { "node": ">=22" },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "home-assistant",
+    "smart-home",
+    "xiaomi",
+    "mijia"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
   "license": "MIT",
+  "author": "huhuai-ni",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huhuai-ni/dsh-homeassistant.git"
+  },
+  "homepage": "https://github.com/huhuai-ni/dsh-homeassistant#readme",
+  "bugs": {
+    "url": "https://github.com/huhuai-ni/dsh-homeassistant/issues"
+  },
   "dsh": {
-    "bundle": { "patch": "./cordis.patch.yml" },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "platform": "web",
       "inject": [
