@@ -1,7 +1,7 @@
 {
   "name": "dsh-homeassistant",
   "version": "0.2.1",
-  "description": "DSH 插件：通过 Home Assistant 控制家里的设备（灯、空调、风扇），带设置页与完整教程",
+  "description": "DSH 插件：用 Home Assistant 接管米家（小米智能家居）设备 —— 灯、空调、风扇、红外遥控，带设置页与完整教程",
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -23,9 +23,12 @@
     "dsh-plugin",
     "deepseek-harness",
     "home-assistant",
-    "smart-home",
     "xiaomi",
-    "mijia"
+    "mijia",
+    "miio",
+    "miot",
+    "smart-home",
+    "xiaomi-miot"
   ],
   "engines": {
     "node": ">=22"
