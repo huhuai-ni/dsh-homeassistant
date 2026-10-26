@@ -1,9 +1,10 @@
-# dsh-homeassistant · 家庭助理
+# dsh-homeassistant · 米家 / 小米智能家居控制
 
-> 让 DSH 里的 AI 伙伴直接控制你家的灯、空调、风扇。
+> 让 DSH 里的 AI 伙伴直接控制你**米家 App 里的设备**：灯、空调、风扇、红外遥控器。
 > 不靠手机、不靠模拟点击，一条 HTTP 请求打到底。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Xiaomi](https://img.shields.io/badge/%E7%B1%B3%E5%AE%B6-Xiaomi%20MIoT-orange)](https://github.com/al-one/hass-xiaomi-miot)
 
 ---
 
@@ -27,6 +28,26 @@
 
 AI 就会调 `ha_control` / `ha_light` / `ha_service`，真的把灯关掉。
 
+---
+
+## 米家（Xiaomi MIoT）适配说明
+
+这个插件**不直接对接米家**，而是通过 Home Assistant 的 **Xiaomi Miot Auto** 集成间接控制。原因写在下一节，这里只说清楚它覆盖了什么：
+
+| 米家里的东西 | 能不能控 | 说明 |
+|---|---|---|
+| 米家台灯 / 吸顶灯 / 灯泡 | ✅ | 开关、亮度、色温都能调 |
+| 米家插座 / 开关面板 | ✅ | 开关 |
+| 空调（含米家空调伴侣 / 红外遥控） | ✅ | `climate` 实体，开关、温度、模式 |
+| 风扇（含红外遥控款） | ✅ | `fan` 实体，开关、档位 |
+| 窗帘电机 | ✅ | `cover` 实体，开/关 |
+| 米家场景 / 自动化 | ✅ | 通过 `ha_service` 触发 scene / script |
+| 小爱音箱 | ⚠️ 部分 | 能开关、调音量（`media_player`）；**不能让它开口说话** |
+| 门锁 / 摄像头 | ❌ 不碰 | 安全和隐私考虑，本插件不提供相关操作 |
+
+**账号要求**：一个能登录米家 App 的小米账号（手机号或邮箱都行）。密码只填在 HA 里，本插件不保存。
+
+**为什么不做直连**：米家没有对个人开放的 API，第三方库（`python-miio` + `micloud`）的登录流程已经被小米改掉，会返回 `MiCloudAccessDenied`——**密码对也登不上**。Xiaomi Miot Auto 自己维护登录，是目前唯一稳定的路子。
 ---
 
 ## 为什么要绕 Home Assistant 这一道
